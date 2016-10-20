@@ -1,7 +1,6 @@
-# CF example app: ping-pong matching server
+# CF example app: salon
 
-This is an app to match ping-pong players with each other. It's currently an
-API only, so you have to use `curl` to interact with it.
+This is an app to manage salon inventory, staffing and appointment scheduling. It's currently in early development, so there is not much functionality built into it. This application utilizes PCF, Spring Boot, MySQL, H2, flyWay, Angular & Angular Material.
 
 It has an [acceptance test suite][acceptance-test] you might like to look at.
 
@@ -18,7 +17,7 @@ cf login -a https://api.run.pivotal.io
 Target your org / space.
 
 ```bash
-cf target -o myorg -s myspace
+cf target -o myorg -s salon
 ```
 
 Sign up for a cleardb instance.
@@ -34,7 +33,7 @@ brew install maven
 mvn package
 ```
 
-Push the app. Its manifest assumes you called your ClearDB instance 'mysql'.
+Push the app. Its manifest assumes you called your ClearDB instance 'salon'.
 
 ```bash
 cf push -n mysubdomain
@@ -45,8 +44,6 @@ Export the test host
 ```bash
 export HOST=http://mysubdomain.cfapps.io
 ```
-
-Now follow the [interaction instructions][interaction].
 
 ## Running locally
 
@@ -63,9 +60,9 @@ mysql -u root
 Create a database user and table in the MySQL REPL you just opened:
 
 ```sql
-CREATE USER 'springpong'@'localhost' IDENTIFIED BY 'springpong';
-CREATE DATABASE pong_matcher_spring_development;
-GRANT ALL ON pong_matcher_spring_development.* TO 'springpong'@'localhost';
+CREATE USER 'root'@'localhost' IDENTIFIED BY 'root';
+CREATE DATABASE salon;
+GRANT ALL ON salon.* TO 'root'@'localhost';
 exit
 ```
 
@@ -80,9 +77,3 @@ Export the test host
 ```bash
 export HOST=http://localhost:8080
 ```
-
-Now follow the [interaction instructions][interaction].
-
-[acceptance-test]:https://github.com/cloudfoundry-samples/pong_matcher_acceptance
-[pws]:https://run.pivotal.io
-[interaction]:https://github.com/cloudfoundry-samples/pong_matcher_rails/blob/master/README.md#interaction-instructions

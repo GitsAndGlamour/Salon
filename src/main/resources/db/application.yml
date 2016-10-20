@@ -1,0 +1,11 @@
+---
+spring.datasource.driver-class-name: com.mysql.jdbc.Driver
+spring.datasource.url: jdbc:mysql://localhost/salon
+spring.datasource.username: root
+spring.datasource.password: root
+
+# flyway.url= mysql.localhost:3306/salon
+# flyway.baselineOnMigrate = true
+# flyway.password= root
+# flyway.user= root
+# flyway.validate-on-migrate= true

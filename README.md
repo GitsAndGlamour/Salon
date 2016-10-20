@@ -2,9 +2,7 @@
 
 This is an app to manage salon inventory, staffing and appointment scheduling. It's currently in early development, so there is not much functionality built into it. This application utilizes PCF, Spring Boot, MySQL, H2, flyWay, Angular & Angular Material.
 
-It has an [acceptance test suite][acceptance-test] you might like to look at.
-
-**Note**: We highly recommend that you use the latest versions of any software required by this sample application. For example, make sure that you are using the most recent verion of maven.
+**Note**: It's highly recommend that you use the latest versions of any software required by this sample application. For example, make sure that you are using the most recent version of maven.
 
 ## Running on [Pivotal Web Services][pws]
 

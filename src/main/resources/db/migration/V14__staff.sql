@@ -17,7 +17,7 @@ CREATE TABLE `staff` (
   `create_ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_ts` datetime DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT '1',
-  `PASSWORD` varchar(20) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`staff_id`)
 );
 

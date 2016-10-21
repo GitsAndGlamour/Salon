@@ -1,30 +1,30 @@
 (function() {
   'use strict';
 
-  app.service('UserSrvc', User);
+  app.service('UserSrvc', UserSrvc);
 
-  function User() {
+  function UserSrvc() {
       var user;
       var password;
 
-      var getUser() {
+      var getUser = function() {
         return this.user;
-      }
+      };
 
-      var setUser(user) {
+      var setUser = function(user) {
         this.user = user;
-      }
+      };
 
-      var getPassword() {
+      var getPassword = function() {
         return this.password;
-      }
+      };
 
-      var setPassword() {
+      var setPassword = function() {
         this.password = password;
-      }
+      };
 
-      var isValidLoginCredentials() {
+      var hasValidLoginCredentials = function() {
         return DataService.checkForValidLoginCredentials(this.user,this.password);
-      }
+      };
     }
 })();

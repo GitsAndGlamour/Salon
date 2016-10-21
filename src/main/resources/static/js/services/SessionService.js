@@ -5,11 +5,11 @@
 
   function Session() {
     var user;
-    var password;
+    var name;
     var isActiveSession;
     var isValidSession;
     var session;
-    var expirationInDays;
+    var expirationInDays = 365;
 
     var getSession = function() {
       return this.session;
@@ -19,7 +19,7 @@
     var d = new Date();
     d.setTime(d.getTime() + (this.expirationInDays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
-    this.session = this.user + "=" + this.password + ";" + this.expirationInDays + ";path=/";
+    this.session = this.name + "=" + this.user + ";" + this.expirationInDays + ";path=/";
     }
 
     var getCookie = function(user) {
@@ -38,7 +38,7 @@
     }
 
     var checkCookie = function() {
-    var user = getCookie("username");
+    var user = getCookie(this.name);
     if (user != "") {
         this.user = user;
         this.isValidSession = true;
@@ -61,12 +61,12 @@
       this.user = user;
     };
 
-    var getPassword = function() {
-      return this.password;
+    var getName = function() {
+      return this.name;
     };
 
-    var setPassword = function(password) {
-      this.password = password;
+    var setName = function(password) {
+      this.password = name;
     };
 
     var isSessionActive = function() {

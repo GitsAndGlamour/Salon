@@ -67,9 +67,9 @@ public final class StaffsController {
       }
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/staffs/city/{city}")
-  ResponseEntity<List<Staff>> findAllByCity(@PathVariable String city) {
-      List<Staff> staffs = staffRepository.findByCity(city);
+  @RequestMapping(method = RequestMethod.GET, value = "/staffs/role/{roleId}")
+  ResponseEntity<List<Staff>> findAllByRoleId(@PathVariable String roleId) {
+      List<Staff> staffs = staffRepository.findByRoleId(roleId);
 
       if (staffs == null) {
           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -78,9 +78,20 @@ public final class StaffsController {
       }
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/staffs/role/{roleId}")
-  ResponseEntity<List<Staff>> findAllByRoleId(@PathVariable String roleId) {
-      List<Staff> staffs = staffRepository.findByRoleId(roleId);
+  @RequestMapping(method = RequestMethod.GET, value = "/staffs/services/{services}")
+  ResponseEntity<List<Staff>> findAllByServices(@PathVariable String services) {
+      List<Staff> staffs = staffRepository.findByServices(services);
+
+      if (staffs == null) {
+          return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      } else {
+          return new ResponseEntity<>(staffs, HttpStatus.OK);
+      }
+  }
+
+  @RequestMapping(method = RequestMethod.GET, value = "/staffs/status/{statusCode}")
+  ResponseEntity<List<Staff>> findAllByStatusCode(@PathVariable String statusCode) {
+      List<Staff> staffs = staffRepository.findByStatusCode(statusCode);
 
       if (staffs == null) {
           return new ResponseEntity<>(HttpStatus.NOT_FOUND);

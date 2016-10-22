@@ -1,4 +1,4 @@
-CREATE TABLE `resource` (
+CREATE TABLE IF NOT EXISTS `resource` (
   `resource_id` varchar(255) NOT NULL,
   `name` varchar(35) NOT NULL,
   `description` varchar(255) DEFAULT NULL,

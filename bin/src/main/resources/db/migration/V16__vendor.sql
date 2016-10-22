@@ -1,4 +1,4 @@
-CREATE TABLE `vendor` (
+CREATE TABLE IF NOT EXISTS `vendor` (
   `vendor_id` varchar(255) NOT NULL,
   `name` varchar(35) NOT NULL,
   `details` varchar(255) DEFAULT NULL,

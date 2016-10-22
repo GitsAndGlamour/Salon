@@ -1,4 +1,4 @@
-CREATE TABLE `staff` (
+CREATE TABLE IF NOT EXISTS `staff` (
   `staff_id` varchar(255) NOT NULL,
   `first` varchar(35) NOT NULL,
   `last` varchar(35) NOT NULL,

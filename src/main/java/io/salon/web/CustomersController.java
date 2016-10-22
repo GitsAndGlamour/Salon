@@ -79,8 +79,8 @@ public final class CustomersController {
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/customers/staff/{staffId}")
-  ResponseEntity<List<Customer>> findAllByPreferredStaff(@PathVariable String preferred_staff) {
-      List<Customer> customers = customerRepository.findByPreferredStaff(preferred_staff);
+  ResponseEntity<List<Customer>> findAllByPreferredStaff(@PathVariable String preferredStaff) {
+      List<Customer> customers = customerRepository.findByPreferredStaff(preferredStaff);
 
       if (customers == null) {
           return new ResponseEntity<>(HttpStatus.NOT_FOUND);

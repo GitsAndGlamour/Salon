@@ -1,4 +1,4 @@
-CREATE TABLE `product` (
+CREATE TABLE IF NOT EXISTS `product` (
   `product_id` varchar(255) NOT NULL,
   `name` varchar(50) NOT NULL,
   `upc_code` bigint(12) NOT NULL,

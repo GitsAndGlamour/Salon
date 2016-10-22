@@ -1,4 +1,4 @@
-CREATE TABLE `staff` (
+CREATE TABLE IF NOT EXISTS `staff` (
   `staff_id` varchar(255) NOT NULL,
   `first` varchar(35) NOT NULL,
   `last` varchar(35) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE `staff` (
   `create_ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_ts` datetime DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT '1',
-  `PASSWORD` varchar(20) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`staff_id`)
 );
 

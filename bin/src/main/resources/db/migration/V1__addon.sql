@@ -1,4 +1,4 @@
-CREATE TABLE `addon` (
+CREATE TABLE IF NOT EXISTS `addon` (
   `addon_id` varchar(255) NOT NULL,
   `name` varchar(35) NOT NULL,
   `timeblock` int(3) NOT NULL,

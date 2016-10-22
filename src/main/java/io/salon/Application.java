@@ -5,11 +5,16 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import io.salon.util.Logger;
+
 @ComponentScan
 @Configuration
 @EnableAutoConfiguration
-public class Application {
+
+ public class Application {
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+        Logger.promptDebugLogging();
     }
 }

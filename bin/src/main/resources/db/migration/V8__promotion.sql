@@ -1,4 +1,4 @@
-CREATE TABLE `promotion` (
+CREATE TABLE IF NOT EXISTS `promotion` (
   `promotion_id` varchar(255) NOT NULL,
   `name` varchar(35) NOT NULL,
   `description` varchar(255) DEFAULT NULL,

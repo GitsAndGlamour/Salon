@@ -1,4 +1,4 @@
-CREATE TABLE `appointment` (
+CREATE TABLE IF NOT EXISTS `appointment` (
   `appointment_id` int(8) NOT NULL,
   `service_id` varchar(255) DEFAULT NULL,
   `customer_id` varchar(255) NOT NULL,

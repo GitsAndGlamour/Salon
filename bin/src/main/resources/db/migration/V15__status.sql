@@ -1,4 +1,4 @@
-CREATE TABLE `status` (
+CREATE TABLE IF NOT EXISTS `status` (
   `status_code` varchar(255) NOT NULL,
   `name` varchar(35) NOT NULL,
   `class` char(10) DEFAULT NULL,

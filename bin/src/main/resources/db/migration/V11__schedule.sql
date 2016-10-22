@@ -1,4 +1,4 @@
-CREATE TABLE `schedule` (
+CREATE TABLE IF NOT EXISTS `schedule` (
   `schedule_id` varchar(255) NOT NULL,
   `staff_id` varchar(255) DEFAULT NULL,
   `resource_id` varchar(255) DEFAULT NULL,

@@ -1,4 +1,4 @@
-CREATE TABLE `change` (
+CREATE TABLE IF NOT EXISTS `change` (
   `change_id` varchar(255) NOT NULL,
   `name` varchar(35) NOT NULL,
   `table_name` varchar(35) NOT NULL,

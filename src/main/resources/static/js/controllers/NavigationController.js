@@ -8,6 +8,7 @@
     $scope.displayNewPromotionModal = displayNewPromotionModal;
     $scope.displayNewAppointmentModal = displayNewAppointmentModal;
     $scope.displayNewCustomerModal = displayNewCustomerModal;
+    $scope.user = "User";
 
     function displayNewPromotionModal() {
       console.log("displayNewPromotionModal");
@@ -24,9 +25,9 @@
     function displayLoginForm() {
       console.log("displayLoginForm");
       // TODO: Create modal for login form
-      UserSrvc.setUser("0");
+      UserSrvc.setUserId("0");
       UserSrvc.setPassword("root");
-      var user = UserSrvc.getUser();
+      var user = UserSrvc.getUserId();
       var password = UserSrvc.getPassword();
       console.log(user + " " + password);
       if(validateLogin()) {
@@ -37,13 +38,10 @@
     };
 
     function validateLogin() {
-      if(UserSrvc.hasValidLoginCredentials()) {
+      var validUserData = UserSrvc.hasValidLoginCredentials();
+      if(validUserData != null) {
           console.log("User has valid login credentials!");
-          Session.setName("username");
-          Session.setUser(UserSrvc.getUser());
-          Session.setExpirationIndays(364);
-          Session.setCookie(Session.session);
-          Session.checkCookie();
+          setSessionAndCookies();
           if(Session.isActiveSession && Session.isValidSession) {
             console.log("Validated And Active Session!");
             return true;
@@ -58,6 +56,15 @@
               return false;
             }
         }
+    }
+
+    function setSessionAndCookies() {
+      Session.setName("username");
+      Session.setUserId(UserSrvc.getUserId());
+      Session.setExpirationIndays(364);
+      Session.setSession();
+      Session.setCookie(Session.session);
+      Session.checkCookie();
     }
 
 }

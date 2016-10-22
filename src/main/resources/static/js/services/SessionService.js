@@ -4,43 +4,47 @@
   app.service('Session', Session);
 
   function Session() {
-    var user;
+    var userId;
     var name;
     var isActiveSession;
     var isValidSession;
     var session;
     var expirationInDays = 365;
 
-    var getSession = function() {
+    this.getSession = function() {
       return this.session;
     }
 
-    var setSession = function() {
+    this.setSession = function() {
     var d = new Date();
     d.setTime(d.getTime() + (this.expirationInDays*24*60*60*1000));
     var expires = "expires="+ d.toUTCString();
-    this.session = this.name + "=" + this.user + ";" + this.expirationInDays + ";path=/";
+    this.session = this.name + "=" + this.userId + ";" + this.expirationInDays + ";path=/";
+    console.log("Set session: "+this.session);
     }
 
-    var getCookie = function(user) {
-      var name = user + "=";
+    this.getCookie = function(userId) {
+      var name = "username="+userId;
+      console.log(document.cookie);
       var cookies = document.cookie.split(';');
+      console.log(cookies);
       for(var i = 0; i <cookies.length; i++) {
           var cookie = cookies[i];
-          while (cookie.charAt(0)==' ') {
-              cookie = ccookie.substring(1);
-          }
-          if (c.indexOf(name) == 0) {
-              return cookie.substring(name.length,cookie.length);
+          console.log(cookie);
+          if (cookie.indexOf(name) == 0) {
+            console.log("yes");
+            console.log(cookie.substring(name.length-userId.length,cookie.length));
+              return cookie.substring(name.length-userId.length,cookie.length);
           }
       }
       return "";
     }
 
-    var checkCookie = function() {
-    var user = getCookie(this.name);
-    if (user != "") {
-        this.user = user;
+    this.checkCookie = function() {
+    var userId = this.getCookie(this.userId);
+    console.log("Check cookie: "+userId);
+    if (userId != "") {
+        this.userId = userId;
         this.isValidSession = true;
         this.isActiveSession = true;
     } else {
@@ -49,47 +53,47 @@
     }
 }
 
-    var setCookie = function() {
+    this.setCookie = function() {
       document.cookie = this.session;
     }
 
-    var getUser = function() {
-      return this.user;
+    this.getUserId = function() {
+      return this.userId;
     };
 
-    var setUser = function(user) {
-      this.user = user;
+    this.setUserId = function(userId) {
+      this.userId = userId;
     };
 
-    var getName = function() {
+    this.getName = function() {
       return this.name;
     };
 
-    var setName = function(password) {
-      this.password = name;
+    this.setName = function(name) {
+      this.name = name;
     };
 
-    var isSessionActive = function() {
+    this.isSessionActive = function() {
       return this.isActive;
     };
 
-    var setSessionActive = function(isActive) {
+    this.setSessionActive = function(isActive) {
       this.isActiveSession = isActive;
     };
 
-    var isSessionValid = function() {
+    this.isSessionValid = function() {
       return this.isValidSession;
     };
 
-    var setSessionValid = function(isValid) {
+    this.setSessionValid = function(isValid) {
       this.isValidSession = isValid;
     };
 
-    var getExpirationInDays = function() {
+    this.getExpirationInDays = function() {
       return this.expirationInDays;
     }
 
-    var setExpirationIndays = function(days) {
+    this.setExpirationIndays = function(days) {
       this.expirationInDays = days;
     }
 

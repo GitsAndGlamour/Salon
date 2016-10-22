@@ -3,16 +3,23 @@
 
   app.service('DataService', DataService);
 
-  function DataService($http) {
+  function DataService($http, $q) {
       this.checkForValidLoginCredentials = function(user, password) {
-        $http({
+        return $q.resolve($http({
           method: 'GET',
           url: '/staffs/'+user+'/password/'+password,
-        }).then(function successCallback(response) {
-            console.log("DataService: checkForValidLoginCredentials is Successful!");
-        }, function errorCallback(response) {
-            console.log("DataService: checkForValidLoginCredentials is NOT Successful!");
-        });
+        }).success(function(response) {
+          console.log(response);
+          return response.data;
+        }).error(function(response) {
+          console.log(response);
+          return false;
+        })).then(
+          function(response) {
+            console.log(response);
+            return response;
+          }
+        );
     }
   }
 })();

@@ -4,15 +4,48 @@
   app.service('UserSrvc', UserSrvc, ['DataService']);
 
   function UserSrvc(DataService) {
-      this.user;
+      this.userId;
       this.password;
+      this.first;
+      this.last;
+      this.email;
+      this.address;
+      this.city;
+      this.state;
+      this.postal;
+      this.phone;
+      this.altPhone;
+      this.roleId;
+      this.services;
+      this.statusCode;
+      this.createAdmin;
+      this.updaateAdmin;
+      this.createTs;
+      this.updateTs;
+      this.isActive;
 
-      this.getUser = function() {
-        return this.user;
+      this.getUserId = function() {
+        return this.userId;
       };
 
-      this.setUser = function(user) {
-        this.user = user;
+      this.setUserId = function(userId) {
+        this.userId = userId;
+      };
+
+      this.getFirst = function() {
+        return this.first;
+      };
+
+      this.setFirst = function(first) {
+        this.first = first;
+      };
+
+      this.getLast = function() {
+        return this.last;
+      };
+
+      this.setLast = function(last) {
+        this.last = last;
       };
 
       this.getPassword = function() {
@@ -23,8 +56,29 @@
         this.password = password;
       };
 
+      this.updateUserService = function(data) {
+        console.log("destination");
+        console.log(data);
+        this.first = data.first;
+        this.last = data.last;
+      }
+
       this.hasValidLoginCredentials = function() {
-        return DataService.checkForValidLoginCredentials(this.user,this.password);
-      };
+        var $promise = DataService.checkForValidLoginCredentials(this.userId,this.password).then(
+          function(result) {
+            if(result.status == 200) {
+              return result.data;
+            } else {
+              return null;
+            }
+          }
+        );
+        return $q.resolve($promise).then({
+          function(response) {
+            console.log(response);
+            return response;
+          }
+        });
+      }
     }
 })();

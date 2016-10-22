@@ -24,7 +24,6 @@ public final class StaffsController {
   @Autowired
   StaffsController(StaffRepository staffRepository) {
     this.staffRepository = staffRepository;
-    Logger.promptDebugLogging();
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/staffs/{staffId}")

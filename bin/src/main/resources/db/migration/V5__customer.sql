@@ -1,4 +1,4 @@
-CREATE TABLE `customer` (
+CREATE TABLE IF NOT EXISTS `customer` (
   `customer_id` varchar(255) NOT NULL,
   `first` varchar(35) NOT NULL,
   `last` varchar(35) NOT NULL,

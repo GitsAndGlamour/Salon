@@ -1,4 +1,4 @@
-CREATE TABLE `role` (
+CREATE TABLE IF NOT EXISTS `role` (
   `role_id` varchar(255) NOT NULL,
   `name` varchar(35) NOT NULL,
   `create_admin` varchar(255) NOT NULL DEFAULT '0',

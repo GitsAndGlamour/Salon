@@ -12,15 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.salon.domain.Staff;
 import io.salon.repositories.StaffRepository;
+import io.salon.util.Logger;
 
 @RestController
 public final class StaffsController {
 
   final StaffRepository staffRepository;
+  Logger logger = new Logger();
+  
 
   @Autowired
   StaffsController(StaffRepository staffRepository) {
     this.staffRepository = staffRepository;
+    Logger.promptDebugLogging();
   }
 
   @RequestMapping(method = RequestMethod.GET, value = "/staffs/{staffId}")
@@ -100,13 +104,32 @@ public final class StaffsController {
       }
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/staffs")
-  ResponseEntity<List<Staff>> findAll() {
-      List<Staff> staffs = staffRepository.findAll();
-
-      if (staffs == null) {
+  @RequestMapping(method = RequestMethod.GET, value = "/staffs/{staffId}/password/{password}")
+  ResponseEntity<Staff> findByStaffIdAndPassword(@PathVariable String staffId, @PathVariable String password) {
+      Staff staff = staffRepository.findByStaffIdAndPassword(staffId, password);
+      
+      Logger.debug("Entering findByStaffIdAndPassword...");
+      if (staff == null) {
+          Logger.error("findByStaffIdAndPassword did not find any staff with staff id '" + staffId + "' or password '" + password + "'.");
           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
       } else {
+    	  Logger.debug(staff.toString());
+          return new ResponseEntity<>(staff, HttpStatus.OK);
+      }
+  }
+
+
+
+  @RequestMapping(method = RequestMethod.GET, value = "/staffs")
+  ResponseEntity<List<Staff>> findAll() {
+	  
+      List<Staff> staffs = staffRepository.findAll();
+      Logger.debug("Entering findAll(Staff)...");
+      if (staffs == null) {
+          Logger.error("findByStaffIdAndPassword did not find any staff with staffs.");
+          return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      } else {
+    	  Logger.debug(staffs.toString());
           return new ResponseEntity<>(staffs, HttpStatus.OK);
       }
   }

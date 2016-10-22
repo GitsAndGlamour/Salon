@@ -24,8 +24,8 @@
     function displayLoginForm() {
       console.log("displayLoginForm");
       // TODO: Create modal for login form
-      UserSrvc.setUser("user");
-      UserSrvc.setPassword("password");
+      UserSrvc.setUser("0");
+      UserSrvc.setPassword("root");
       var user = UserSrvc.getUser();
       var password = UserSrvc.getPassword();
       console.log(user + " " + password);

@@ -1,4 +1,4 @@
-CREATE TABLE `shift` (
+CREATE TABLE IF NOT EXISTS `shift` (
   `shift_id` varchar(255) NOT NULL,
   `start_ts` datetime DEFAULT NULL,
   `end_ts` datetime DEFAULT NULL,

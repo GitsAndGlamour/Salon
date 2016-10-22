@@ -1,4 +1,4 @@
-CREATE TABLE `discount` (
+CREATE TABLE IF NOT EXISTS `discount` (
   `discount_type` varchar(255) NOT NULL,
   `name` varchar(35) NOT NULL,
   `percentage` decimal(5,2) DEFAULT NULL,

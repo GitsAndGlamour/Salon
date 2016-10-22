@@ -8,6 +8,7 @@ import io.salon.domain.Staff;
 
 public interface StaffRepository extends JpaRepository<Staff, String>{
 	Staff findByStaffId(String staffId);
+	Staff findByStaffIdAndPassword(String staffId, String password);
 	Staff findByEmail(String email);
 	Staff findByPhone(String phone);
 	List<Staff> findByFirstOrLast(String first, String last);

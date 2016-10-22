@@ -1,4 +1,4 @@
-CREATE TABLE `count` (
+CREATE TABLE IF NOT EXISTS `count` (
   `count_id` int(6) NOT NULL AUTO_INCREMENT,
   `count_date` date DEFAULT NULL,
   `count_ts` datetime DEFAULT NULL,

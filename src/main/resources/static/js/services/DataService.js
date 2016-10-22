@@ -3,21 +3,16 @@
 
   app.service('DataService', DataService);
 
-  function DataService() {
-      var isValidLoginCredentials = function(user, password) {
-          $.ajax({
-            type: "POST",
-            url: "/staff/{user}/{password}",
-            data: {
-              user: user,
-              password: password},
-            success: function (result) {
-                console.log("DataService: isValidLoginCredentials is Successful!");
-            },
-            error: function (result) {
-              console.log("DataService: isValidLoginCredentials is NOT Successful!");
-            }
-          });
-      }
+  function DataService($http) {
+      this.checkForValidLoginCredentials = function(user, password) {
+        $http({
+          method: 'GET',
+          url: '/staffs/'+user+'/password/'+password,
+        }).then(function successCallback(response) {
+            console.log("DataService: checkForValidLoginCredentials is Successful!");
+        }, function errorCallback(response) {
+            console.log("DataService: checkForValidLoginCredentials is NOT Successful!");
+        });
+    }
   }
 })();

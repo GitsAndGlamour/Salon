@@ -6,6 +6,7 @@
     function LoginSrvc(Session, UserSrvc, User, $timeout) {
         var login = this;
         login.user = {
+            userId: null,
             name: "User",
             data: null,
             isSessionActive: false
@@ -13,6 +14,7 @@
 
         login.login = function() {
             var user = {
+                userId: null,
                 name: "User",
                 data: null,
                 isSessionActive: false
@@ -33,10 +35,12 @@
         login.validateLogin = function() {
             do {
                 login.user.data = UserSrvc.hasValidLoginCredentials();
+                console.log(login.user.data);
             }
             while (login.user.data == null);
-            if (login.user.data != false && login.user.data != null) {
+            if (login.user.data.userId != null) {
                 Session.setSessionActive(true);
+                login.user.userId = login.user.data.userId;
                 login.user.isSessionActive = Session.isSessionActive();
                 setSessionAndCookies();
                 if (Session.isActiveSession && Session.isValidSession) {

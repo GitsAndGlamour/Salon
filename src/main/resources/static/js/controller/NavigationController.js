@@ -9,11 +9,22 @@
         $scope.displayNewPromotionModal = displayNewPromotionModal;
         $scope.displayNewAppointmentModal = displayNewAppointmentModal;
         $scope.displayNewCustomerModal = displayNewCustomerModal;
+        $scope.logout = logout;
+        $scope.showHistory = showHistory;
         $scope.user = {
+            userId: null,
             name: "User",
             data: null,
             isSessionActive: null
         };
+
+        function logout() {
+            console.log("logout");
+        };
+
+        function showHistory() {
+            console.log("show history");
+        }
 
         function displayNewPromotionModal() {
             console.log("displayNewPromotionModal");
@@ -37,7 +48,6 @@
                 clickOutsideToClose: true
             }).then(function(result) {
                 $scope.user = LoginSrvc.user;
-                $scope.$apply();
             });
         };
 

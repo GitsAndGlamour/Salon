@@ -1,25 +1,21 @@
 (function() {
   'use strict';
 
-  app.service('DataService', DataService);
+  app.service('DataService', DataService, ['User']);
 
-  function DataService($http, $q) {
+  function DataService($http, User) {
       this.checkForValidLoginCredentials = function(user, password) {
-        return $q.resolve($http({
-          method: 'GET',
-          url: '/staffs/'+user+'/password/'+password,
-        }).success(function(response) {
-          console.log(response);
-          return response.data;
-        }).error(function(response) {
-          console.log(response);
-          return false;
-        })).then(
-          function(response) {
-            console.log(response);
-            return response;
-          }
-        );
-    }
-  }
+        return $http({
+              method: 'GET',
+              url: '/staffs/'+user+'/password/'+password,
+            }).success(function(response) {
+              User.setUser(response);
+              return true;
+            }).error(function(response) {
+              return false;
+            }).then(function(response) {});
+            return User.getUser();
+          };
+
+      }
 })();

@@ -1,30 +1,34 @@
 (function() {
   'use strict';
 
-  app.service('UserSrvc', UserSrvc, ['DataService']);
+  app.service('UserSrvc', UserSrvc, ['DataService', 'User']);
 
-  function UserSrvc(DataService) {
-      this.user;
-      this.password;
+  function UserSrvc(DataService, $q, User) {
+    this.userId;
+    this.password;
 
-      this.getUser = function() {
-        return this.user;
-      };
+    this.getUserId = function() {
+      return this.userId;
+    }
 
-      this.setUser = function(user) {
-        this.user = user;
-      };
+    this.getPassword = function() {
+      return this.password;
+    }
 
-      this.getPassword = function() {
-        return this.password;
-      };
+    this.setUserId = function(userId) {
+      this.userId = userId;
+    }
 
-      this.setPassword = function(password) {
-        this.password = password;
-      };
+    this.setPassword = function(password) {
+      this.password = password;
+    }
 
       this.hasValidLoginCredentials = function() {
-        return DataService.checkForValidLoginCredentials(this.user,this.password);
-      };
+        var credentials = null;
+      do {
+        var credentials = DataService.checkForValidLoginCredentials(this.userId, this.password);
+      } while(credentials == null);
+        return User.getUser();
     }
+  }
 })();

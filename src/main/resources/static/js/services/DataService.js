@@ -1,18 +1,21 @@
 (function() {
   'use strict';
 
-  app.service('DataService', DataService);
+  app.service('DataService', DataService, ['User']);
 
-  function DataService($http) {
+  function DataService($http, User) {
       this.checkForValidLoginCredentials = function(user, password) {
-        $http({
-          method: 'GET',
-          url: '/staffs/'+user+'/password/'+password,
-        }).then(function successCallback(response) {
-            console.log("DataService: checkForValidLoginCredentials is Successful!");
-        }, function errorCallback(response) {
-            console.log("DataService: checkForValidLoginCredentials is NOT Successful!");
-        });
-    }
-  }
+        return $http({
+              method: 'GET',
+              url: '/staffs/'+user+'/password/'+password,
+            }).success(function(response) {
+              User.setUser(response);
+              return true;
+            }).error(function(response) {
+              return false;
+            }).then(function(response) {});
+            return User.getUser();
+          };
+
+      }
 })();

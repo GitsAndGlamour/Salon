@@ -28,6 +28,7 @@
   <script src="js/config/routes.js"></script>
   <script src="js/model/User.js"></script>
   <script src="js/services/DataService.js"></script>
+  <script src="js/services/LoginService.js"></script>
   <script src="js/services/SessionService.js"></script>
   <script src="js/services/UserService.js"></script>
   <script src="js/controller/NavigationController.js"></script>
@@ -39,6 +40,7 @@
   <script src="js/controller/InventoryController.js"></script>
   <script src="js/controller/ReportsController.js"></script>
   <script src="js/controller/SettingsController.js"></script>
+  <script src="js/controller/DialogController.js"></script>
 
   <!-- HTML Content -->
 
@@ -76,9 +78,9 @@
                   </md-menu-content>
                 </md-menu>
 
-         <md-button class="md-raised" ng-click="displayLoginForm()" ng-href="#" aria-label="Sign-in">
+         <md-button class="md-raised" ng-click="displayLoginPrompt($event)" ng-href="#" aria-label="Sign-in">
            Sign-in
-         </md-button>
+         </md-button> {{status}}
        </div>
        </md-toolbar>
   <!-- Navigation sub-header -->

@@ -1,73 +1,45 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  app.controller('NavigationCtrl', NavigationCtrl, ['Session', 'UserSrvc', 'User']);
-  function NavigationCtrl($scope, Session, UserSrvc, $timeout, User) {
-    $scope.currentNavigationItem = 'home';
-    $scope.displayLoginForm = displayLoginForm;
-    $scope.displayNewPromotionModal = displayNewPromotionModal;
-    $scope.displayNewAppointmentModal = displayNewAppointmentModal;
-    $scope.displayNewCustomerModal = displayNewCustomerModal;
-    $scope.user = {
-      name: "User",
-      data: null
-    };
+    app.controller('NavigationCtrl', NavigationCtrl, ['LoginSrvc']);
 
-    function displayNewPromotionModal() {
-      console.log("displayNewPromotionModal");
-    };
+    function NavigationCtrl($scope, LoginSrvc, $mdDialog) {
+        $scope.currentNavigationItem = 'home';
+        $scope.displayLoginPrompt = displayLoginPrompt;
+        $scope.displayNewPromotionModal = displayNewPromotionModal;
+        $scope.displayNewAppointmentModal = displayNewAppointmentModal;
+        $scope.displayNewCustomerModal = displayNewCustomerModal;
+        $scope.user = {
+            name: "User",
+            data: null,
+            isSessionActive: null
+        };
 
-    function displayNewAppointmentModal() {
-      console.log("displayNewAppointmentModal");
-    };
+        function displayNewPromotionModal() {
+            console.log("displayNewPromotionModal");
+        };
 
-    function displayNewCustomerModal() {
-      console.log("displayNewCustomerModal");
-    };
+        function displayNewAppointmentModal() {
+            console.log("displayNewAppointmentModal");
+        };
 
-    function displayLoginForm() {
-      // TODO: Create modal for login form
-      UserSrvc.setUserId("0");
-      UserSrvc.setPassword("root");
-      login();
-    };
+        function displayNewCustomerModal() {
+            console.log("displayNewCustomerModal");
+        };
 
-    function login() {
-      var user = UserSrvc.getUserId();
-      var password = UserSrvc.getPassword();
-      var isValidLogin = validateLogin();
-      if(isValidLogin) {
+        function displayLoginPrompt(ev) {
 
-        $timeout(function() {
-          $scope.user.name = User.getFirst() + " " + User.getLast();
-        }, 250);
-      }
-    };
+            $mdDialog.show({
+                controller: 'DialogCtrl',
+                templateUrl: 'templates/snippets/login.dialog.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true
+            }).then(function(result) {
+                $scope.user = LoginSrvc.user;
+                $scope.$apply();
+            });
+        };
 
-    function validateLogin() {
-      $scope.user.data = UserSrvc.hasValidLoginCredentials();
-      if($scope.user.data != false && $scope.user.data != null) {
-          setSessionAndCookies();
-          if(Session.isActiveSession && Session.isValidSession) {
-            return true;
-          } else if (Session.isActiveSession) {
-              return false;
-          } else if (Session.isValidSession) {
-              return false;
-            } else {
-              return false;
-            }
-        }
     }
-
-    function setSessionAndCookies() {
-      Session.setName("username");
-      Session.setUserId(UserSrvc.getUserId());
-      Session.setExpirationIndays(364);
-      Session.setSession();
-      Session.setCookie(Session.session);
-      Session.checkCookie();
-    }
-
-}
 })();

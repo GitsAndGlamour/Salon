@@ -4,29 +4,35 @@
     app.service('UserSrvc', UserSrvc, ['DataService', 'User']);
 
     function UserSrvc(DataService, $q, User) {
-        this.userId;
-        this.password;
+        var $user = this;
+        $user.userId;
+        $user.password;
 
-        this.getUserId = function() {
-            return this.userId;
+        $user.getUserId = function() {
+            return $user.userId;
         }
 
-        this.getPassword = function() {
-            return this.password;
+        $user.getPassword = function() {
+            return $user.password;
         }
 
-        this.setUserId = function(userId) {
-            this.userId = userId;
+        $user.setUserId = function(userId) {
+            $user.userId = userId;
         }
 
-        this.setPassword = function(password) {
-            this.password = password;
+        $user.setPassword = function(password) {
+            $user.password = password;
         }
 
-        this.hasValidLoginCredentials = function() {
+        $user.endSession = function() {
+          $user.setUserId(null);
+          $user.setPassword(null);
+        }
+
+        $user.hasValidLoginCredentials = function() {
             var credentials = null;
             do {
-                credentials = DataService.checkForValidLoginCredentials(this.userId, this.password);
+                credentials = DataService.checkForValidLoginCredentials($user.userId, $user.password);
             } while (credentials == null);
             return User.getUser();
         }

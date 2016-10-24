@@ -3,195 +3,216 @@
 
   app.service('User', User);
   function User() {
+    var User = this;
+    User.userId = null;
+    User.password = null;
+    User.first = null;
+    User.last = null;
+    User.email = null;
+    User.address = null;
+    User.city = null;
+    User.state = null;
+    User.postal = null;
+    User.phone = null;
+    User.altPhone = null;
+    User.roleId = null;
+    User.services = null;
+    User.statusCode = null;
+    User.createAdmin = null;
+    User.updaateAdmin = null;
+    User.createTs = null;
+    User.updateTs = null;
+    User.isActive = null;
 
-    this.userId = null;
-    this.password = null;
-    this.first = null;
-    this.last = null;
-    this.email = null;
-    this.address = null;
-    this.city = null;
-    this.state = null;
-    this.postal = null;
-    this.phone = null;
-    this.altPhone = null;
-    this.roleId = null;
-    this.services = null;
-    this.statusCode = null;
-    this.createAdmin = null;
-    this.updaateAdmin = null;
-    this.createTs = null;
-    this.updateTs = null;
-    this.isActive = null;
-
-    this.getUserId = function() {
-      return this.userId;
+    User.getUserId = function() {
+      return User.userId;
     }
 
-    this.getPassword = function() {
-      return this.password;
+    User.getPassword = function() {
+      return User.password;
     }
 
-    this.getFirst = function() {
-      return this.first;
+    User.getFirst = function() {
+      return User.first;
     }
 
-    this.getLast = function() {
-      return this.last;
+    User.getLast = function() {
+      return User.last;
     }
 
-    this.getEmail = function() {
-      return this.email;
+    User.getEmail = function() {
+      return User.email;
     }
 
-    this.getAddress = function() {
-      return this.address;
+    User.getAddress = function() {
+      return User.address;
     }
 
-    this.getCity = function() {
-      return this.city;
+    User.getCity = function() {
+      return User.city;
     }
 
-    this.getState = function() {
-      return this.state;
+    User.getState = function() {
+      return User.state;
     }
 
-    this.getPostal = function() {
-      return this.postal;
+    User.getPostal = function() {
+      return User.postal;
     }
 
-    this.getPhone = function() {
-      return this.phone;
+    User.getPhone = function() {
+      return User.phone;
     }
 
-    this.getAltPhone = function() {
-      return this.altPhone;
+    User.getAltPhone = function() {
+      return User.altPhone;
     }
 
-    this.getRoleId = function() {
-      return this.roleId;
+    User.getRoleId = function() {
+      return User.roleId;
     }
 
-    this.getServices = function() {
-      return this.services;
+    User.getServices = function() {
+      return User.services;
     }
 
-    this.getStatusCode = function() {
-      return this.statusCode;
+    User.getStatusCode = function() {
+      return User.statusCode;
     }
 
-    this.getCreateAdmin = function() {
-      return this.createAdmin;
+    User.getCreateAdmin = function() {
+      return User.createAdmin;
     }
 
-    this.getUpdateAdmin = function() {
-      return this.updateAdmin;
+    User.getUpdateAdmin = function() {
+      return User.updateAdmin;
     }
 
-    this.getCreateTs = function() {
-      return this.createTs;
+    User.getCreateTs = function() {
+      return User.createTs;
     }
 
-    this.getUpdateTs = function() {
-      return this.updateTs;
+    User.getUpdateTs = function() {
+      return User.updateTs;
     }
 
-    this.setUserId = function(userId) {
-      this.userId = userId;
+    User.setUserId = function(userId) {
+      User.userId = userId;
     }
 
-    this.setPassword = function(password) {
-      this.password = password;
+    User.setPassword = function(password) {
+      User.password = password;
     }
 
-    this.setFirst = function(first) {
-      this.first = first;
+    User.setFirst = function(first) {
+      User.first = first;
     }
 
-    this.setLast = function(last) {
-      this.last = last;
+    User.setLast = function(last) {
+      User.last = last;
     }
 
-    this.setEmail = function(email) {
-      this.email = email;
+    User.setEmail = function(email) {
+      User.email = email;
     }
 
-    this.setAddress = function(address) {
-      this.address = address;
+    User.setAddress = function(address) {
+      User.address = address;
     }
 
-    this.setCity = function(city) {
-      this.city = city;
+    User.setCity = function(city) {
+      User.city = city;
     }
 
-    this.setState = function(state) {
-      this.state = state;
+    User.setState = function(state) {
+      User.state = state;
     }
 
-    this.setPostal = function(postal) {
-      this.postal = postal;
+    User.setPostal = function(postal) {
+      User.postal = postal;
     }
 
-    this.setPhone = function(phone) {
-      this.phone = phone;
+    User.setPhone = function(phone) {
+      User.phone = phone;
     }
 
-    this.setAltPhone = function(altPhone) {
-      this.altPhone = altPhone;
+    User.setAltPhone = function(altPhone) {
+      User.altPhone = altPhone;
     }
 
-    this.setRoleId = function(roleId) {
-      this.roleId = roleId;
+    User.setRoleId = function(roleId) {
+      User.roleId = roleId;
     }
 
-    this.setServices = function(services) {
-      this.services = services;
+    User.setServices = function(services) {
+      User.services = services;
     }
 
-    this.setStatusCode = function(statusCode) {
-      this.statusCode = statusCode;
+    User.setStatusCode = function(statusCode) {
+      User.statusCode = statusCode;
     }
 
-    this.setCreateAdmin = function(createAdmin) {
-      this.createAdmin = createAdmin;
+    User.setCreateAdmin = function(createAdmin) {
+      User.createAdmin = createAdmin;
     }
 
-    this.setUpdateAdmin = function(updateAdmin) {
-      this.updateAdmin = updateAdmin;
+    User.setUpdateAdmin = function(updateAdmin) {
+      User.updateAdmin = updateAdmin;
     }
 
-    this.setCreateTs = function(createTs) {
-      this.createTs = createTs;
+    User.setCreateTs = function(createTs) {
+      User.createTs = createTs;
     }
 
-    this.setUpdateTs = function(updateTs) {
-      this.updateTs = updateTs;
+    User.setUpdateTs = function(updateTs) {
+      User.updateTs = updateTs;
     }
 
-    this.setUser = function(data) {
-      this.userId = data.staff_id;
-      this.password = data.password;
-      this.first = data.first;
-      this.last = data.last;
-      this.email = data.email;
-      this.address = data.address;
-      this.city = data.city;
-      this.state = data.state;
-      this.postal = data.postal;
-      this.phone = data.phone;
-      this.altPhone = data.alt_phone;
-      this.roleId = data.role_id;
-      this.services = data.services;
-      this.statusCode = data.status_code;
-      this.createAdmin = data.create_admin;
-      this.updaateAdmin = data.update_admin;
-      this.createTs = data.create_ts;
-      this.updateTs = data.update_ts;
-      this.isActive = data.is_active;
+    User.setUser = function(data) {
+      User.userId = data.staff_id;
+      User.password = data.password;
+      User.first = data.first;
+      User.last = data.last;
+      User.email = data.email;
+      User.address = data.address;
+      User.city = data.city;
+      User.state = data.state;
+      User.postal = data.postal;
+      User.phone = data.phone;
+      User.altPhone = data.alt_phone;
+      User.roleId = data.role_id;
+      User.services = data.services;
+      User.statusCode = data.status_code;
+      User.createAdmin = data.create_admin;
+      User.updaateAdmin = data.update_admin;
+      User.createTs = data.create_ts;
+      User.updateTs = data.update_ts;
+      User.isActive = data.is_active;
     }
 
-    this.getUser = function() {
-      return this;
+    User.resetUser = function() {
+      User.userId = null;
+      User.password = null;
+      User.first = null;
+      User.last = null;
+      User.email = null;
+      User.address = null;
+      User.city = null;
+      User.state = null;
+      User.postal = null;
+      User.phone = null;
+      User.altPhone = null;
+      User.roleId = null;
+      User.services = null;
+      User.statusCode = null;
+      User.createAdmin = null;
+      User.updaateAdmin = null;
+      User.createTs = null;
+      User.updateTs = null;
+      User.isActive = null;
+    }
+    User.getUser = function() {
+      return User;
     }
   }
 })();

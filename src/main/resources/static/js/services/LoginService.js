@@ -32,6 +32,19 @@
             }
         };
 
+        login.logout = function() {
+          login.user = {
+              userId: null,
+              name: "User",
+              data: null,
+              isSessionActive: false
+          };
+          UserSrvc.endSession();
+          if(!login.validateLogin()){
+            User.resetUser();
+          }
+        }
+
         login.validateLogin = function() {
             do {
                 login.user.data = UserSrvc.hasValidLoginCredentials();

@@ -27,7 +27,7 @@
             var cookies = document.cookie.split(';');
             for (var i = 0; i < cookies.length; i++) {
                 var cookie = cookies[i];
-                if (cookie.indexOf(name) == 0) {
+                if (cookie.indexOf(name) == 0 && userId != null) {
                     return cookie.substring(name.length - userId.length, cookie.length);
                 }
             }

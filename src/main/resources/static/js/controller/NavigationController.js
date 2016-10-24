@@ -20,11 +20,18 @@
 
         function logout() {
             console.log("logout");
+            $scope.user = {
+              userId: null,
+              name: "User",
+              data: null,
+              isSessionActive: null
+            };
+            LoginSrvc.logout();
         };
 
         function showHistory() {
             console.log("show history");
-        }
+        };
 
         function displayNewPromotionModal() {
             console.log("displayNewPromotionModal");

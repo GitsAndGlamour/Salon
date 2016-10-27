@@ -20,20 +20,14 @@
             d.setTime(d.getTime() + (this.expirationInDays * 24 * 60 * 60 * 1000));
             var expires = "expires=" + d.toUTCString();
             this.session = this.name + "=" + this.userId + ";" + this.expirationInDays + ";path=/";
-            console.log("Set session: " + this.session);
         }
 
         this.getCookie = function(userId) {
             var name = "username=" + userId;
-            console.log(document.cookie);
             var cookies = document.cookie.split(';');
-            console.log(cookies);
             for (var i = 0; i < cookies.length; i++) {
                 var cookie = cookies[i];
-                console.log(cookie);
-                if (cookie.indexOf(name) == 0) {
-                    console.log("yes");
-                    console.log(cookie.substring(name.length - userId.length, cookie.length));
+                if (cookie.indexOf(name) == 0 && userId != null) {
                     return cookie.substring(name.length - userId.length, cookie.length);
                 }
             }
@@ -42,7 +36,6 @@
 
         this.checkCookie = function() {
             var userId = this.getCookie(this.userId);
-            console.log("Check cookie: " + userId);
             if (userId != "") {
                 this.userId = userId;
                 this.isValidSession = true;

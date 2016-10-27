@@ -16,6 +16,8 @@
         function handleLoginSubmit() {
             UserSrvc.setUserId(vm.userId);
             UserSrvc.setPassword(vm.password);
+            console.log(UserSrvc.getUserId());
+            console.log(UserSrvc.getPassword());
             if (LoginSrvc.login()) {
                 return $mdDialog.hide();
             } else {

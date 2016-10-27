@@ -5,7 +5,7 @@
 
   function DataService($http, User) {
       this.checkForValidLoginCredentials = function(user, password) {
-        return $http({
+        $http({
               method: 'GET',
               url: '/staffs/'+user+'/password/'+password,
             }).success(function(response) {

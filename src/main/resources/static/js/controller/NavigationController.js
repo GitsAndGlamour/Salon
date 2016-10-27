@@ -20,13 +20,13 @@
 
         function logout() {
             console.log("logout");
+            LoginSrvc.logout();
             $scope.user = {
               userId: null,
               name: "User",
               data: null,
               isSessionActive: null
             };
-            LoginSrvc.logout();
         };
 
         function showHistory() {
